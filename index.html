@@ -27,6 +27,11 @@
             color: var(--dark);
             overflow-x: hidden;
             line-height: 1.6;
+            max-width: 100%;
+        }
+        
+        html {
+            overflow-x: hidden;
         }
 
         /* Landing Section */
@@ -42,14 +47,16 @@
             background-position: center;
             background-repeat: no-repeat;
             overflow: hidden;
-            padding-top: 100px; /* Add padding to account for fixed header */
+            padding-top: 100px;
+            padding-bottom: 80px; /* Add bottom padding */
+            margin-bottom: 60px; /* Add margin after hero section */
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
+            width: 100%;
+            height: 100%;
             background: radial-gradient(circle at 20% 50%, rgba(201, 150, 44, 0.08) 0%, transparent 50%),
                         radial-gradient(circle at 80% 80%, rgba(201, 150, 44, 0.04) 0%, transparent 50%),
                         radial-gradient(circle at 40% 20%, rgba(201, 150, 44, 0.06) 0%, transparent 50%);
@@ -59,8 +66,8 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
-            50% { transform: translate(10%, 10%) rotate(180deg); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(5%, 5%) rotate(180deg); }
         }
 
         .nav {
@@ -86,6 +93,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .logo {
@@ -239,9 +248,11 @@
 
         /* Company Section */
         .company {
-            padding: 100px 50px;
+            padding: 100px 20px;
             background: #ffffff;
             position: relative;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .section-title {
@@ -332,8 +343,10 @@
 
         /* Testimonials */
         .testimonials {
-            padding: 100px 50px;
+            padding: 100px 20px;
             background: #ffffff;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .testimonials-grid {
@@ -398,8 +411,10 @@
 
         /* Info Section */
         .info {
-            padding: 100px 50px;
+            padding: 100px 20px;
             background: #ffffff;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .info-content {
