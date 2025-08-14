@@ -88,17 +88,6 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-        
-        .logo-text {
             font-size: 24px;
             font-weight: bold;
             background: linear-gradient(135deg, var(--gold), var(--dark));
@@ -544,6 +533,159 @@
             color: var(--gray);
         }
 
+        /* Quote Form Section */
+        .quote-form-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .quote-form-container {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 36px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--dark);
+        }
+
+        .quote-form-container h2 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .detailed-form {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .form-section {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .detailed-form input,
+        .detailed-form select,
+        .detailed-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .detailed-form input:focus,
+        .detailed-form select:focus,
+        .detailed-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .detailed-form textarea {
+            resize: vertical;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .submit-btn {
+            padding: 15px 50px;
+            background: linear-gradient(135deg, var(--gold), #e6b333);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 150, 44, 0.3);
+        }
+
+        .form-note {
+            color: var(--gray);
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav {
@@ -577,9 +719,7 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-content">
-            <div class="logo">
-                <img src="https://i.imgur.com/Ow5Ox6H.png" alt="UberLike Logo">
-            </div>
+            <div class="logo">UBERLIKE</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -593,18 +733,51 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Elevate Your Journey</h1>
-            <p class="hero-subtitle">Experience unparalleled luxury with our premium private jet charter services</p>
+            <h1>Travel Smarter. Fly Private.</h1>
+            <p class="hero-subtitle">Reliable, efficient private jet charters – on your schedule, to your destination.</p>
             
             <div class="booking-widget">
-                <form class="booking-form">
+                <form class="booking-form" id="bookingForm">
                     <div class="form-group">
                         <label for="from">From</label>
-                        <input type="text" id="from" placeholder="Departure city or airport">
+                        <input type="text" id="from" placeholder="Departure city or airport" list="european-capitals" required>
+                        <datalist id="european-capitals">
+                            <option value="Amsterdam, Netherlands">
+                            <option value="Athens, Greece">
+                            <option value="Belgrade, Serbia">
+                            <option value="Berlin, Germany">
+                            <option value="Bern, Switzerland">
+                            <option value="Bratislava, Slovakia">
+                            <option value="Brussels, Belgium">
+                            <option value="Bucharest, Romania">
+                            <option value="Budapest, Hungary">
+                            <option value="Copenhagen, Denmark">
+                            <option value="Dublin, Ireland">
+                            <option value="Helsinki, Finland">
+                            <option value="Lisbon, Portugal">
+                            <option value="Ljubljana, Slovenia">
+                            <option value="London, United Kingdom">
+                            <option value="Luxembourg City, Luxembourg">
+                            <option value="Madrid, Spain">
+                            <option value="Monaco, Monaco">
+                            <option value="Oslo, Norway">
+                            <option value="Paris, France">
+                            <option value="Prague, Czech Republic">
+                            <option value="Reykjavik, Iceland">
+                            <option value="Riga, Latvia">
+                            <option value="Rome, Italy">
+                            <option value="Sofia, Bulgaria">
+                            <option value="Stockholm, Sweden">
+                            <option value="Tallinn, Estonia">
+                            <option value="Vienna, Austria">
+                            <option value="Vilnius, Lithuania">
+                            <option value="Warsaw, Poland">
+                            <option value="Zagreb, Croatia">
+                        </datalist>
                     </div>
                     <div class="form-group">
                         <label for="to">To</label>
-                        <input type="text" id="to" placeholder="Destination city or airport">
+                        <input type="text" id="to" placeholder="Destination city or airport" list="european-capitals" required>
                     </div>
                     <button type="submit" class="cta-button">Get Quote</button>
                 </form>
@@ -615,22 +788,22 @@
     <!-- Company Section -->
     <section class="company" id="about">
         <h2 class="section-title">Who We Are</h2>
-        <p class="section-subtitle">Setting the standard in private aviation since 2010</p>
+        <p class="section-subtitle">A new name in private aviation, built to bring fresh thinking and unmatched flexibility to modern air travel.</p>
         
         <div class="company-content">
             <div class="company-text">
-                <h3>Excellence in Every Flight</h3>
-                <p>UberLike Jets represents the pinnacle of private aviation, offering bespoke charter services that redefine luxury travel. With over a decade of experience, we've built our reputation on safety, discretion, and exceptional service.</p>
-                <p>Our fleet of meticulously maintained aircraft and hand-picked crew members ensure that every journey exceeds expectations. From last-minute business trips to leisurely escapes, we transform travel into an extraordinary experience.</p>
+                <h3>Focused on Safety. Dedicated to Service.</h3>
+                <p>UberLike Jets delivers tailored private jet charters that put reliability, safety, and client care first. Whether for urgent business travel, a family trip, or simply saving valuable time, we make the process simple and seamless.</p>
+                <p>Our network of modern, well-maintained aircraft and experienced crews ensures you can travel with confidence from booking to landing.</p>
                 
                 <div class="stats">
                     <div class="stat">
                         <div class="stat-number">500+</div>
-                        <div class="stat-label">Aircraft</div>
+                        <div class="stat-label">Aircraft in network</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">150K+</div>
-                        <div class="stat-label">Flights</div>
+                        <div class="stat-number">Global</div>
+                        <div class="stat-label">reach</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">24/7</div>
@@ -647,12 +820,12 @@
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
         <h2 class="section-title">Client Experiences</h2>
-        <p class="section-subtitle">Trusted by industry leaders worldwide</p>
+        <p class="section-subtitle">Trusted by clients from business leaders to families on the move</p>
         
         <div class="testimonials-grid">
             <div class="testimonial">
                 <div class="stars">★★★★★</div>
-                <h3>SkyElite transformed our corporate travel. The attention to detail and flexibility they provide is unmatched. Every flight feels like a five-star experience."</p>
+                <p class="testimonial-text">"UberLike makes travel simple. From booking to arrival, every step is handled professionally."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar"></div>
                     <div class="author-info">
@@ -664,7 +837,7 @@
             
             <div class="testimonial">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"From booking to landing, the service is impeccable. The crew anticipates every need, and the aircraft are pristine. Simply the best in private aviation."</p>
+                <p class="testimonial-text">"Fast, reliable, and safe. We've used them for years for both work and family travel."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar"></div>
                     <div class="author-info">
@@ -676,7 +849,7 @@
             
             <div class="testimonial">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"We've used UberLike for all our family travels for three years. The safety standards and professionalism give us complete peace of mind."</p>
+                <p class="testimonial-text">"Professional pilots, well-maintained aircraft, and excellent support – exactly what we need for business travel."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar"></div>
                     <div class="author-info">
@@ -690,35 +863,142 @@
 
     <!-- Info Section -->
     <section class="info" id="services">
-        <h2 class="section-title">Private Jet Charter Excellence</h2>
-        <p class="section-subtitle">Everything you need to know about flying private</p>
+        <h2 class="section-title">Private Jet Charter – Clear Advantages</h2>
+        <p class="section-subtitle"></p>
         
         <div class="info-content">
             <div class="info-grid">
                 <div class="info-card">
                     <div class="info-icon">🛡️</div>
                     <h3>Safety First</h3>
-                    <p>Our aircraft undergo rigorous maintenance checks and are operated by highly trained pilots with thousands of flight hours. We exceed all industry safety standards.</p>
+                    <p>We exceed industry safety standards. All aircraft are regularly inspected, and every flight is operated by seasoned pilots with thousands of hours in the cockpit.</p>
                 </div>
                 
                 <div class="info-card">
                     <div class="info-icon">⚡</div>
                     <h3>Time Efficiency</h3>
-                    <p>Skip the queues and delays. Arrive minutes before departure and fly directly to your destination. Access over 5,000 airports worldwide, many unreachable by commercial flights.</p>
+                    <p>Arrive minutes before takeoff, avoid security lines, and fly directly to your destination. Access over 5,000 airports, including many not served by commercial airlines.</p>
                 </div>
                 
                 <div class="info-card">
                     <div class="info-icon">🎯</div>
                     <h3>Tailored Service</h3>
-                    <p>From cuisine preferences to cabin configuration, every aspect of your flight is customized. Our concierge team handles all details, ensuring a seamless experience.</p>
+                    <p>From flight scheduling to in-flight details, we adapt to your preferences. Our team coordinates every aspect for a smooth, stress-free journey.</p>
                 </div>
                 
                 <div class="info-card">
                     <div class="info-icon">💎</div>
-                    <h3>Ultimate Privacy</h3>
-                    <p>Conduct business meetings, relax with family, or simply enjoy solitude. Your private cabin is your sanctuary in the sky, with complete discretion guaranteed.</p>
+                    <h3>Privacy & Comfort</h3>
+                    <p>Your flight is your own space – ideal for working, resting, or travelling with family without interruptions.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Quote Form Section (Initially Hidden) -->
+    <section class="quote-form-section" id="quoteForm" style="display: none;">
+        <div class="quote-form-container">
+            <button class="close-btn" onclick="closeQuoteForm()">×</button>
+            <h2>Complete Your Private Jet Quote</h2>
+            <p class="form-subtitle">Please provide your details and we'll send you a personalized quote within 30 minutes.</p>
+            
+            <form id="detailedQuoteForm" class="detailed-form">
+                <!-- Flight Details -->
+                <div class="form-section">
+                    <h3>Flight Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>From</label>
+                            <input type="text" id="fromDisplay" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>To</label>
+                            <input type="text" id="toDisplay" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Departure Date*</label>
+                            <input type="date" name="departureDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Departure Time</label>
+                            <input type="time" name="departureTime">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Return Flight Needed?</label>
+                            <select name="returnFlight">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Passengers*</label>
+                            <input type="number" name="passengers" min="1" max="20" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name*</label>
+                            <input type="text" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address*</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number*</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="company">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+                    <div class="form-group full-width">
+                        <label>Special Requests or Requirements</label>
+                        <textarea name="specialRequests" rows="4" placeholder="Catering preferences, special luggage, pets, etc."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Preferred Aircraft Size</label>
+                            <select name="aircraftSize">
+                                <option value="any">No Preference</option>
+                                <option value="light">Light Jet (4-6 seats)</option>
+                                <option value="midsize">Midsize Jet (6-8 seats)</option>
+                                <option value="heavy">Heavy Jet (8-16 seats)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Trip Type</label>
+                            <select name="tripType">
+                                <option value="business">Business</option>
+                                <option value="leisure">Leisure</option>
+                                <option value="emergency">Emergency</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Send Application</button>
+                    <p class="form-note">By submitting, you agree to our privacy policy and terms of service.</p>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -727,7 +1007,7 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>UBERLIKE JETS</h3>
-                <p>Your gateway to exceptional private aviation. Experience the freedom of personalized travel with our world-class fleet and service.</p>
+                <p>Private aviation made simple, safe, and efficient.</p>
                 <div class="social-links">
                     <a href="#">f</a>
                     <a href="#">t</a>
@@ -785,15 +1065,63 @@
         });
 
         // Form submission
-        document.querySelector('.booking-form').addEventListener('submit', function(e) {
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const from = document.getElementById('from').value;
             const to = document.getElementById('to').value;
             
             if (from && to) {
-                alert(`Quote request received!\nFrom: ${from}\nTo: ${to}\n\nOur team will contact you within 30 minutes.`);
-            } else {
-                alert('Please fill in both departure and destination locations.');
+                // Show quote form
+                document.getElementById('fromDisplay').value = from;
+                document.getElementById('toDisplay').value = to;
+                document.getElementById('quoteForm').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+        // Close quote form
+        function closeQuoteForm() {
+            document.getElementById('quoteForm').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Submit detailed quote form
+        document.getElementById('detailedQuoteForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                from: document.getElementById('fromDisplay').value,
+                to: document.getElementById('toDisplay').value,
+                departureDate: formData.get('departureDate'),
+                departureTime: formData.get('departureTime'),
+                returnFlight: formData.get('returnFlight'),
+                passengers: formData.get('passengers'),
+                fullName: formData.get('fullName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                company: formData.get('company'),
+                specialRequests: formData.get('specialRequests'),
+                aircraftSize: formData.get('aircraftSize'),
+                tripType: formData.get('tripType'),
+                createdAt: new Date().toISOString()
+            };
+
+            try {
+                // For now, just log the data (no backend needed yet)
+                console.log('Quote Request Data:', data);
+                
+                // Show success message
+                alert('Thank you! Your quote request has been received. We will contact you within 30 minutes.');
+                
+                // Close form and reset
+                closeQuoteForm();
+                document.getElementById('bookingForm').reset();
+                document.getElementById('detailedQuoteForm').reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error submitting your request. Please try again.');
             }
         });
 
