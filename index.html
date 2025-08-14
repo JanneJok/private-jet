@@ -42,6 +42,7 @@
             background-position: center;
             background-repeat: no-repeat;
             overflow: hidden;
+            padding-top: 100px; /* Add padding to account for fixed header */
         }
 
         .hero::before {
@@ -90,10 +91,18 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
+            color: var(--dark);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9), 
+                         -1px -1px 2px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+        
+        .nav.scrolled .logo {
             background: linear-gradient(135deg, var(--gold), var(--dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
+            text-shadow: none;
         }
 
         .nav-links {
@@ -109,6 +118,11 @@
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+        }
+        
+        .nav.scrolled .nav-links a {
+            text-shadow: none;
         }
 
         .nav-links a:hover {
@@ -122,6 +136,7 @@
             padding: 0 20px;
             max-width: 1200px;
             width: 100%;
+            margin-top: 40px; /* Add margin to push content down from header */
         }
 
         .hero h1 {
@@ -695,6 +710,18 @@
             .nav-links {
                 display: none;
             }
+            
+            .hero {
+                padding-top: 120px; /* More padding on mobile */
+            }
+            
+            .hero-content {
+                margin-top: 60px; /* More margin on mobile */
+            }
+            
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem); /* Slightly smaller on mobile */
+            }
 
             .booking-form {
                 grid-template-columns: 1fr;
@@ -710,6 +737,10 @@
             }
 
             .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
                 grid-template-columns: 1fr;
             }
         }
@@ -1108,11 +1139,28 @@
             };
 
             try {
-                // For now, just log the data (no backend needed yet)
-                console.log('Quote Request Data:', data);
+                // Google Sheets Integration
+                // IMPORTANT: Replace YOUR_WEB_APP_URL with your actual Google Apps Script URL
+                const GOOGLE_SCRIPT_URL = 'YOUR_WEB_APP_URL'; // <-- CHANGE THIS!
                 
-                // Show success message
-                alert('Thank you! Your quote request has been received. We will contact you within 30 minutes.');
+                // If URL is not set, just log the data
+                if (GOOGLE_SCRIPT_URL === 'YOUR_WEB_APP_URL') {
+                    console.log('Quote Request Data:', data);
+                    alert('Demo Mode: Form data logged to console.\n\nTo save data, follow the Google Sheets setup guide.');
+                } else {
+                    // Send to Google Sheets
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Required for Google Apps Script
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    // Show success (no-cors means we can't read response)
+                    alert('Thank you! Your quote request has been submitted. We will contact you within 30 minutes.');
+                }
                 
                 // Close form and reset
                 closeQuoteForm();
