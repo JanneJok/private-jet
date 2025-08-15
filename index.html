@@ -1152,11 +1152,20 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 UberLike Jets. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p id="copyright">&copy; 2024 UberLike Jets. All rights reserved. | Privacy Policy | Terms of Service</p>
         </div>
     </footer>
 
     <script>
+        // Set current year in copyright
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright');
+            if (copyrightElement) {
+                copyrightElement.innerHTML = `&copy; ${currentYear} UberLike Jets. All rights reserved. | Privacy Policy | Terms of Service`;
+            }
+        });
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
