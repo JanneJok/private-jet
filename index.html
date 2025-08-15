@@ -208,7 +208,19 @@
             transition: all 0.3s;
         }
 
-        .form-group input:focus {
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            color: var(--dark);
+            font-size: 16px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .form-group select:focus {
             outline: none;
             border-color: var(--gold);
             background: rgba(255, 255, 255, 1);
@@ -355,6 +367,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
+            justify-items: center;
         }
 
         .testimonial {
@@ -365,6 +378,8 @@
             padding: 30px;
             transition: all 0.3s;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            width: 100%;
+            max-width: 400px;
         }
 
         .testimonial:hover {
@@ -786,44 +801,77 @@
                 <form class="booking-form" id="bookingForm">
                     <div class="form-group">
                         <label for="from">From</label>
-                        <input type="text" id="from" placeholder="Departure city or airport" list="european-capitals" required>
-                        <datalist id="european-capitals">
-                            <option value="Amsterdam, Netherlands">
-                            <option value="Athens, Greece">
-                            <option value="Belgrade, Serbia">
-                            <option value="Berlin, Germany">
-                            <option value="Bern, Switzerland">
-                            <option value="Bratislava, Slovakia">
-                            <option value="Brussels, Belgium">
-                            <option value="Bucharest, Romania">
-                            <option value="Budapest, Hungary">
-                            <option value="Copenhagen, Denmark">
-                            <option value="Dublin, Ireland">
-                            <option value="Helsinki, Finland">
-                            <option value="Lisbon, Portugal">
-                            <option value="Ljubljana, Slovenia">
-                            <option value="London, United Kingdom">
-                            <option value="Luxembourg City, Luxembourg">
-                            <option value="Madrid, Spain">
-                            <option value="Monaco, Monaco">
-                            <option value="Oslo, Norway">
-                            <option value="Paris, France">
-                            <option value="Prague, Czech Republic">
-                            <option value="Reykjavik, Iceland">
-                            <option value="Riga, Latvia">
-                            <option value="Rome, Italy">
-                            <option value="Sofia, Bulgaria">
-                            <option value="Stockholm, Sweden">
-                            <option value="Tallinn, Estonia">
-                            <option value="Vienna, Austria">
-                            <option value="Vilnius, Lithuania">
-                            <option value="Warsaw, Poland">
-                            <option value="Zagreb, Croatia">
-                        </datalist>
+                        <select id="from" required>
+                            <option value="">Select departure city</option>
+                            <option value="Amsterdam, Netherlands">Amsterdam, Netherlands</option>
+                            <option value="Athens, Greece">Athens, Greece</option>
+                            <option value="Belgrade, Serbia">Belgrade, Serbia</option>
+                            <option value="Berlin, Germany">Berlin, Germany</option>
+                            <option value="Bern, Switzerland">Bern, Switzerland</option>
+                            <option value="Bratislava, Slovakia">Bratislava, Slovakia</option>
+                            <option value="Brussels, Belgium">Brussels, Belgium</option>
+                            <option value="Bucharest, Romania">Bucharest, Romania</option>
+                            <option value="Budapest, Hungary">Budapest, Hungary</option>
+                            <option value="Copenhagen, Denmark">Copenhagen, Denmark</option>
+                            <option value="Dublin, Ireland">Dublin, Ireland</option>
+                            <option value="Helsinki, Finland">Helsinki, Finland</option>
+                            <option value="Lisbon, Portugal">Lisbon, Portugal</option>
+                            <option value="Ljubljana, Slovenia">Ljubljana, Slovenia</option>
+                            <option value="London, United Kingdom">London, United Kingdom</option>
+                            <option value="Luxembourg City, Luxembourg">Luxembourg City, Luxembourg</option>
+                            <option value="Madrid, Spain">Madrid, Spain</option>
+                            <option value="Monaco, Monaco">Monaco, Monaco</option>
+                            <option value="Oslo, Norway">Oslo, Norway</option>
+                            <option value="Paris, France">Paris, France</option>
+                            <option value="Prague, Czech Republic">Prague, Czech Republic</option>
+                            <option value="Reykjavik, Iceland">Reykjavik, Iceland</option>
+                            <option value="Riga, Latvia">Riga, Latvia</option>
+                            <option value="Rome, Italy">Rome, Italy</option>
+                            <option value="Sofia, Bulgaria">Sofia, Bulgaria</option>
+                            <option value="Stockholm, Sweden">Stockholm, Sweden</option>
+                            <option value="Tallinn, Estonia">Tallinn, Estonia</option>
+                            <option value="Vienna, Austria">Vienna, Austria</option>
+                            <option value="Vilnius, Lithuania">Vilnius, Lithuania</option>
+                            <option value="Warsaw, Poland">Warsaw, Poland</option>
+                            <option value="Zagreb, Croatia">Zagreb, Croatia</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="to">To</label>
-                        <input type="text" id="to" placeholder="Destination city or airport" list="european-capitals" required>
+                        <select id="to" required>
+                            <option value="">Select destination city</option>
+                            <option value="Amsterdam, Netherlands">Amsterdam, Netherlands</option>
+                            <option value="Athens, Greece">Athens, Greece</option>
+                            <option value="Belgrade, Serbia">Belgrade, Serbia</option>
+                            <option value="Berlin, Germany">Berlin, Germany</option>
+                            <option value="Bern, Switzerland">Bern, Switzerland</option>
+                            <option value="Bratislava, Slovakia">Bratislava, Slovakia</option>
+                            <option value="Brussels, Belgium">Brussels, Belgium</option>
+                            <option value="Bucharest, Romania">Bucharest, Romania</option>
+                            <option value="Budapest, Hungary">Budapest, Hungary</option>
+                            <option value="Copenhagen, Denmark">Copenhagen, Denmark</option>
+                            <option value="Dublin, Ireland">Dublin, Ireland</option>
+                            <option value="Helsinki, Finland">Helsinki, Finland</option>
+                            <option value="Lisbon, Portugal">Lisbon, Portugal</option>
+                            <option value="Ljubljana, Slovenia">Ljubljana, Slovenia</option>
+                            <option value="London, United Kingdom">London, United Kingdom</option>
+                            <option value="Luxembourg City, Luxembourg">Luxembourg City, Luxembourg</option>
+                            <option value="Madrid, Spain">Madrid, Spain</option>
+                            <option value="Monaco, Monaco">Monaco, Monaco</option>
+                            <option value="Oslo, Norway">Oslo, Norway</option>
+                            <option value="Paris, France">Paris, France</option>
+                            <option value="Prague, Czech Republic">Prague, Czech Republic</option>
+                            <option value="Reykjavik, Iceland">Reykjavik, Iceland</option>
+                            <option value="Riga, Latvia">Riga, Latvia</option>
+                            <option value="Rome, Italy">Rome, Italy</option>
+                            <option value="Sofia, Bulgaria">Sofia, Bulgaria</option>
+                            <option value="Stockholm, Sweden">Stockholm, Sweden</option>
+                            <option value="Tallinn, Estonia">Tallinn, Estonia</option>
+                            <option value="Vienna, Austria">Vienna, Austria</option>
+                            <option value="Vilnius, Lithuania">Vilnius, Lithuania</option>
+                            <option value="Warsaw, Poland">Warsaw, Poland</option>
+                            <option value="Zagreb, Croatia">Zagreb, Croatia</option>
+                        </select>
                     </div>
                     <button type="submit" class="cta-button">Get Quote</button>
                 </form>
@@ -975,7 +1023,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Return Flight Needed?</label>
-                            <select name="returnFlight">
+                            <select name="returnFlight" id="returnFlightSelect" onchange="toggleReturnFields()">
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>
                             </select>
@@ -983,6 +1031,16 @@
                         <div class="form-group">
                             <label>Number of Passengers*</label>
                             <input type="number" name="passengers" min="1" max="20" required>
+                        </div>
+                    </div>
+                    <div class="form-row" id="returnFlightFields" style="display: none;">
+                        <div class="form-group">
+                            <label>Return Date*</label>
+                            <input type="date" name="returnDate" id="returnDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Return Time</label>
+                            <input type="time" name="returnTime" id="returnTime">
                         </div>
                     </div>
                 </div>
@@ -1125,10 +1183,31 @@
             }
         });
 
+        // Toggle return flight fields
+        function toggleReturnFields() {
+            const returnSelect = document.getElementById('returnFlightSelect');
+            const returnFields = document.getElementById('returnFlightFields');
+            const returnDate = document.getElementById('returnDate');
+            const returnTime = document.getElementById('returnTime');
+            
+            if (returnSelect.value === 'yes') {
+                returnFields.style.display = 'grid';
+                returnDate.required = true;
+            } else {
+                returnFields.style.display = 'none';
+                returnDate.required = false;
+                returnDate.value = '';
+                returnTime.value = '';
+            }
+        }
+
         // Close quote form
         function closeQuoteForm() {
             document.getElementById('quoteForm').style.display = 'none';
             document.body.style.overflow = 'auto';
+            // Reset return flight fields
+            document.getElementById('returnFlightSelect').value = 'no';
+            toggleReturnFields();
         }
 
         // Submit detailed quote form
@@ -1142,6 +1221,8 @@
                 departureDate: formData.get('departureDate'),
                 departureTime: formData.get('departureTime'),
                 returnFlight: formData.get('returnFlight'),
+                returnDate: formData.get('returnDate'),
+                returnTime: formData.get('returnTime'),
                 passengers: formData.get('passengers'),
                 fullName: formData.get('fullName'),
                 email: formData.get('email'),
